@@ -1,15 +1,21 @@
 *{
     padding: 0;
-    margin: 0;
+    margin: 5px;
 }
+
 body{
     background-color: honeydew;
 }
-image{
-    height: 200px;
-    width: 200px;
-}
+
 button{
     padding: 10px;
     margin: 5px 5px;
+}
+div{
+    display: inline-block;
+}
+#ratingDiv{
+    display: block;
+    font-weight: bold;
+    text-transform: capitalize;
 }

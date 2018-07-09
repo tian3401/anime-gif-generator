@@ -1,7 +1,8 @@
 //variables 
 var topics = ['my hero academia', 'dragonball z', 'trigun','one punch man','ranma 1/2'],
 newImage,
-newButton;
+newButton,
+newDiv;
 
 //Create function that creates new buttons for topics in the array
 function buttonCreator(subject){
@@ -36,9 +37,11 @@ $(document).on('click','#buttonContainers button', function(){
     }).then(function call (res){
         for(x=0;x<10;x++){
             newImg = $('<img>').attr('src',res.data[x].images.fixed_height_still.url).attr('id', 'gif');
-            newButton = $('<button>').attr('data-motion',res.data[x].images.downsized.url).attr('data-still',res.data[x].images.downsized_still.url).attr('data-toggle','off');
+            newButton = $('<button>').attr('data-motion',res.data[x].images.fixed_height.url).attr('data-still',res.data[x].images.fixed_height_still.url).attr('data-toggle','off');
             newButton.append(newImg);
-            $('#gifContainer').append(newButton);
+            newDiv = $('<div>').text('Rating '+ res.data[x].rating).attr('id','ratingDiv');
+            var newDivCont = $('<div>').attr('id','divCont').append(newDiv).append(newButton);
+            $('#gifContainer').append(newDivCont);
         }
     });
 });
@@ -69,6 +72,5 @@ $(document).on('click', '#gifContainer button', function(){
 // Clears the gif container so buttons replace instead of append 
 // Keeps the number of gifs to 10 in the gif container 
 function clear(){
-    $('button #gif').remove();
-    $('#gifContainer button').remove();
+    $('#gifContainer').empty();
 };
