@@ -5,6 +5,8 @@
 
 body{
     background-image: url('background-pic.png');
+    background-repeat: none;
+    background-size: cover;
 }
 
 button{
